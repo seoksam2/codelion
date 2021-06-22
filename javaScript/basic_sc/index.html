@@ -1,20 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>jquery 이벤트</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>jQuery 기초</h1>
-    <textarea id="content">jQuery를 배워보자</textarea>
+    <h1 id="hp">HP : 3</h1>
+    <div class="background">
+        <img id="drone" src="images/drone.png" alt="drone">
+        <img id="spit" src="images/spit.png" alt="spit">
+        <img id="bunker" src="images/bunker.png" alt="bunker">
+    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-    crossorigin="anonymous"></script>
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+    </script>
+
     <script>
-        $('#content').val()
-        console.log($('#content').val());
+        var hp = 3;
+        $("#drone").click(function () {
+            $("#spit").fadeIn();
+            $("#spit").animate({
+                left: "+=250"
+            });
+            $("#spit").fadeOut(function () {
+                hp = hp - 1;
+                $("#hp").text('HP : ' + hp);
+                if (hp == 0) {
+                    $("#bunker").fadeOut();
+                }
+            });
+            $("#spit").css({
+                left: '150px'
+            });
+
+
+        })
     </script>
 </body>
+
 </html>
